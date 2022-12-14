@@ -28,9 +28,7 @@ class XmlSerializer implements SerializerInterface {
     private ?string $root = null;
 
     public function serialize(ArrayInterface $array): string {
-        $rootElements = array_filter($array->getKeys(), function(string $key) : bool {
-            return !(new StringEx($key))->contains('/');
-        });
+        $rootElements = array_filter($array->getKeys(), fn(string $key): bool => !(new StringEx($key))->contains('/'));
         if(count($rootElements) > 1 && $this->root !== null) {
 
             // there are multiple root documents, wrap them all with our root element
@@ -43,7 +41,6 @@ class XmlSerializer implements SerializerInterface {
      * Add or replace root element surrounding top-level elements in the array
      *
      * @note this tag is useful for serializing valid XML if the array has no root element itself
-     * @param string $tag
      * @return static
      */
     public function withRootElement(string $tag) : object {
@@ -55,7 +52,6 @@ class XmlSerializer implements SerializerInterface {
     /**
      * Return the array as an XML string
      *
-     * @param ArrayInterface $array
      * @param string|null $outer - optional output tag, used for recursion
      * @return string - xml string representation of the array
      */
@@ -65,11 +61,11 @@ class XmlSerializer implements SerializerInterface {
             $key = StringEx::stringify($key);
 
             /** @noinspection PhpStatementHasEmptyBodyInspection */
-            if(strncmp($key, '@', 1) === 0) {
+            if(str_starts_with($key, '@')) {
 
                 // skip attributes
             } else {
-                $encodedTag = htmlspecialchars($outer ? $outer : $key, ENT_QUOTES);
+                $encodedTag = htmlspecialchars($outer ?: $key, ENT_QUOTES);
                 if(is_array($value) && (count($value) > 0) && isset($value[0])) {
 
                     // numeric array found => child nodes
@@ -83,7 +79,7 @@ class XmlSerializer implements SerializerInterface {
                         $attrs = '';
                         foreach($value as $attrKey => $attrValue) {
                             $attrKey = StringEx::stringify($attrKey);
-                            if(strncmp($attrKey, '@', 1) === 0) {
+                            if(str_starts_with($attrKey, '@')) {
                                 $attrValue = StringEx::stringify($attrValue);
                                 $attrs .= ' ' . htmlspecialchars(substr($attrKey, 1), ENT_QUOTES) . '="' . htmlspecialchars($attrValue, ENT_QUOTES) . '"';
                             }

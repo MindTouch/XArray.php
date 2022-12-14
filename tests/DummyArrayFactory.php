@@ -25,25 +25,15 @@ use modethirteen\XArray\XArray;
 class DummyArrayFactory {
 
     /**
-     * @var string
-     */
-    private string $class;
-
-    /**
      * @var SchemaBuilder|null
      */
     private ?SchemaBuilder $schemaBuilder = null;
 
-    /**
-     * @param string $class
-     */
-    public function __construct(string $class) {
-        $this->class = $class;
+    public function __construct(private readonly string $class)
+    {
     }
 
     /**
-     * @param array $array
-     * @return ArrayInterface
      * @throws SchemaLockedArrayUndefinedKeyException
      */
     public function newArray(array $array) : ArrayInterface {
@@ -54,9 +44,7 @@ class DummyArrayFactory {
         // special schema bootstrapping for schema locked arrays
         $source = new XArray($array);
         $x = new SchemaLockedArray(
-            $this->schemaBuilder !== null
-                ? $this->schemaBuilder
-                : SchemaBuilder::newFromXArray($source)
+            $this->schemaBuilder ?? SchemaBuilder::newFromXArray($source)
         );
         foreach($source->toFlattenedArray() as $key => $value) {
             $x->setVal($key, $value);
@@ -65,7 +53,6 @@ class DummyArrayFactory {
     }
 
     /**
-     * @param SchemaBuilder $schemaBuilder
      * @return static
      */
     public function withSchemaBuilder(SchemaBuilder $schemaBuilder) : object {

@@ -27,7 +27,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
 
     /**
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Simple_array_with_attributes_and_text(string $class) : void {
@@ -50,7 +49,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
 
     /**
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Nested_array_with_attributes_and_text(string $class) : void {
@@ -84,7 +82,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
 
     /**
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Nested_array_with_root_element_and_attributes_and_text_and_supplied_root_element(string $class) : void {
@@ -119,7 +116,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
 
     /**
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Nested_array_with_no_root_element_with_supplied_root_element(string $class) : void {
@@ -160,7 +156,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
      * Checks that the following characters get escaped: ' " < > &
      *
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Attributes_with_special_characters_are_encoded(string $class) : void {
@@ -185,7 +180,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
      * Checks that the following characters get escaped: ' " < > &
      *
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Attribute_values_with_special_characters_are_encoded(string $class) : void {
@@ -210,7 +204,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
      * Checks that the following characters get escaped: ' " < > &
      *
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Text_with_special_characters_are_encoded(string $class) : void {
@@ -235,7 +228,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
      * Checks that the following characters get escaped: ' " < > &
      *
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Xml_tags_with_special_characters_are_encoded(string $class) : void {
@@ -260,7 +252,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
      * Checks that the following characters get escaped: ' " < > &
      *
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Xml_values_with_special_characters_are_encoded(string $class) : void {
@@ -283,7 +274,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
 
     /**
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Can_handle_numeric_arrays(string $class) : void {
@@ -310,7 +300,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
 
     /**
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Can_handle_non_string_types(string $class) : void {

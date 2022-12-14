@@ -28,7 +28,6 @@ abstract class XArrayUnitTestCaseBase extends UnitTestCaseBase  {
     protected static string $class;
 
     /**
-     * @param array $array
      * @param SchemaBuilder|null $schemaBuilder - default schema builder will be inferred from source array
      * @return ArrayInterface
      */

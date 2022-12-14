@@ -18,9 +18,6 @@ namespace modethirteen\XArray\Tests\XArrayBase;
 
 abstract class getString_Test extends XArrayUnitTestCaseBase  {
 
-    /**
-     * @return array
-     */
     public static function source_key_expected_Provider() : array {
         return [
             'empty level one' => [
@@ -140,9 +137,7 @@ abstract class getString_Test extends XArrayUnitTestCaseBase  {
                 '1.23'
             ],
             'function' => [
-                ['foo' => function() {
-                    return 'qux';
-                }],
+                ['foo' => fn() => 'qux'],
                 'foo',
                 'qux'
             ],
@@ -157,9 +152,6 @@ abstract class getString_Test extends XArrayUnitTestCaseBase  {
     /**
      * @test
      * @dataProvider source_key_expected_Provider
-     * @param array $source
-     * @param string $key
-     * @param string $expected
      */
     public function Can_get_string_value(array $source, string $key, string $expected) : void {
 

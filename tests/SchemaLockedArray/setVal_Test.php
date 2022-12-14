@@ -23,9 +23,6 @@ use modethirteen\XArray\Tests\XArrayBase\XArrayUnitTestCaseBase;
 
 class setVal_Test extends XArrayUnitTestCaseBase {
 
-    /**
-     * @return array
-     */
     public static function key_value_expected_Provider() : array {
         return [
             'string level one' => [
@@ -94,12 +91,9 @@ class setVal_Test extends XArrayUnitTestCaseBase {
     /**
      * @test
      * @dataProvider key_value_expected_Provider
-     * @param string $key
-     * @param mixed $value
-     * @param array $expected
      * @throws SchemaLockedArrayUndefinedKeyException
      */
-    public function Can_set_value_for_allowed_keys(string $key, $value, array $expected) : void {
+    public function Can_set_value_for_allowed_keys(string $key, mixed $value, array $expected) : void {
 
         // arrange
         $schema = (new SchemaBuilder())

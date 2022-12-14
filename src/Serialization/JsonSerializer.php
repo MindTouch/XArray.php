@@ -38,7 +38,7 @@ class JsonSerializer implements SerializerInterface {
         if($this->isUnescapedSlashesEnabled) {
             $options = $options | JSON_UNESCAPED_SLASHES;
         }
-        $result = $options > 0 ? json_encode($array->toArray(), $options) : json_encode($array->toArray());
+        $result = $options > 0 ? json_encode($array->toArray(), $options) : json_encode($array->toArray(), JSON_THROW_ON_ERROR);
         return is_string($result) ? $result : '{}';
     }
 

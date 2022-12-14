@@ -18,9 +18,6 @@ namespace modethirteen\XArray\Tests\XArrayBase;
 
 abstract class getVal_Test extends XArrayUnitTestCaseBase  {
 
-    /**
-     * @return array
-     */
     public static function source_key_expected_Provider() : array {
         return [
             'empty level one' => [
@@ -121,11 +118,8 @@ abstract class getVal_Test extends XArrayUnitTestCaseBase  {
     /**
      * @test
      * @dataProvider source_key_expected_Provider
-     * @param array $source
-     * @param string $key
-     * @param mixed $expected
      */
-    public function Can_get_value(array $source, string $key, $expected) : void {
+    public function Can_get_value(array $source, string $key, mixed $expected) : void {
 
         // arrange
         $x = self::newArray($source);

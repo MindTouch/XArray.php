@@ -36,7 +36,7 @@ interface ArrayInterface {
      * @param mixed $default - if the key is not found, this value will be returned
      * @return mixed|null
      */
-    function getVal(string $key, $default = null);
+    function getVal(string $key, mixed $default = null);
 
     /**
      * Find $key in the XArray, which is delimited by /
@@ -51,17 +51,11 @@ interface ArrayInterface {
 
     /**
      * Set or replace a key value
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return void
      */
-    function setVal(string $key, $value = null) : void;
+    function setVal(string $key, mixed $value = null) : void;
 
     /**
      * Accessor for the array
-     *
-     * @return array
      */
     function toArray() : array;
 
@@ -74,19 +68,12 @@ interface ArrayInterface {
 
     /**
      * Return a collection with the values of another array merged with this one
-     *
-     * @param ArrayInterface $array
-     * @return array
      */
     function toMergedArray(ArrayInterface $array) : array;
 
-    /**
-     * @return string
-     */
     function toString() : string;
 
     /**
-     * @param SerializerInterface $serializer
      * @return static
      */
     function withSerializer(SerializerInterface $serializer) : object;

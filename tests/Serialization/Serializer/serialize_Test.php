@@ -23,7 +23,6 @@ class serialize_Test extends SerializerUnitTestCaseBase  {
 
     /**
      * @dataProvider class_Provider
-     * @param string $class
      * @test
      */
     public function Can_output_serialized_array(string $class) : void {

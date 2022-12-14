@@ -21,9 +21,6 @@ use modethirteen\XArray\Tests\Serialization\SerializerUnitTestCaseBase;
 
 class serialize_Test extends SerializerUnitTestCaseBase  {
 
-    /**
-     * @return array
-     */
     public static function class_withPrettyPrint_withUnescapedSlashes_expected_Provider() : array {
         $data = [];
         foreach([
@@ -63,10 +60,6 @@ JSON
 
     /**
      * @dataProvider class_withPrettyPrint_withUnescapedSlashes_expected_Provider
-     * @param string $class
-     * @param bool $withPrettyPrint
-     * @param bool $withUnescapedSlashes
-     * @param string $expected
      * @test
      */
     public function Can_output_serialized_array(string $class, bool $withPrettyPrint, bool $withUnescapedSlashes, string $expected) : void {
