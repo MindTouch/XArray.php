@@ -18,27 +18,14 @@ namespace modethirteen\XArray;
 
 class JsonArray extends XArray {
 
-    /**
-     * @var bool
-     */
-    private $isPrettyPrintEnabled = false;
+    private bool $isPrettyPrintEnabled = false;
 
-    /**
-     * @var bool
-     */
-    private $isUnescapedSlashesEnabled = false;
+    private bool $isUnescapedSlashesEnabled = false;
 
-    /**
-     * @param string $json
-     * @return JsonArray
-     */
     public static function newJsonArrayFromJson(string $json) : JsonArray {
-        return new JsonArray(json_decode($json, true));
+        return new JsonArray(json_decode($json, true, 512, JSON_THROW_ON_ERROR));
     }
 
-    /**
-     * @return string
-     */
     public function toJson() : string {
         $options = 0;
         if($this->isPrettyPrintEnabled) {
@@ -47,7 +34,7 @@ class JsonArray extends XArray {
         if($this->isUnescapedSlashesEnabled) {
             $options = $options | JSON_UNESCAPED_SLASHES;
         }
-        $result = $options > 0 ? json_encode($this->array, $options) : json_encode($this->array);
+        $result = $options > 0 ? json_encode($this->array, $options) : json_encode($this->array, JSON_THROW_ON_ERROR);
         return is_string($result) ? $result : '{}';
     }
 
@@ -55,7 +42,6 @@ class JsonArray extends XArray {
      * Remove forward slash escaping with serializing to JSON text
      *
      * @note slashes should always remain escaped if JSON is embedded in, or contains, HTML
-     * @return JsonArray
      */
     public function withUnescapedSlashes() : JsonArray {
 
@@ -69,7 +55,6 @@ class JsonArray extends XArray {
      * Add line spacing and indentation when serializing to JSON text
      *
      * @note Even though this is a clone, we should not create a new array reference - there is no change to the underlying array data
-     * @return JsonArray
      */
     public function withPrettyPrint() : JsonArray {
 

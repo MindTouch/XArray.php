@@ -32,9 +32,6 @@ class SchemaBuilder {
 
     /**
      * Initialize a schema builder from the keys defined in an XArray
-     *
-     * @param XArray $x
-     * @return SchemaBuilder
      */
     public static function newFromXArray(XArray $x) : SchemaBuilder {
         $schema = new SchemaBuilder();
@@ -44,10 +41,7 @@ class SchemaBuilder {
         return $schema;
     }
 
-    /**
-     * @var XArray
-     */
-    private $data;
+    private \modethirteen\XArray\XArray $data;
 
     public function __construct() {
         $this->data = new XArray();
@@ -55,17 +49,12 @@ class SchemaBuilder {
 
     /**
      * @note This is a fluent interface that will mutate the schema under construction and return the builder instance
-     * @param string $key
-     * @return SchemaBuilder
      */
     public function with(string $key) : SchemaBuilder {
         $this->data->setVal($key, true);
         return $this;
     }
 
-    /**
-     * @return XArray
-     */
     public function getSchema() : XArray {
         return $this->data;
     }

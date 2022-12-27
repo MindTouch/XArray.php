@@ -118,9 +118,6 @@ abstract class getAll_Test extends XArrayUnitTestCaseBase  {
     /**
      * @test
      * @dataProvider source_key_expected_Provider
-     * @param array $source
-     * @param string $key
-     * @param array $expected
      */
     public function Can_get_all_values(array $source, string $key, array $expected) : void {
         

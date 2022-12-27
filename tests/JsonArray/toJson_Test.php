@@ -21,9 +21,6 @@ use PHPUnit\Framework\TestCase;
 
 class toJson_Test extends TestCase  {
 
-    /**
-     * @return array
-     */
     public static function withPrettyPrint_withUnescapedSlashes_expected_Provider() : array {
         return [
             'without pretty print and without unescaped slashes' => [false, false, '{"foo":{"bar":["\/\/baz","qux"]},"plugh":"xyzzy"}'],
@@ -57,9 +54,6 @@ JSON
 
     /**
      * @dataProvider withPrettyPrint_withUnescapedSlashes_expected_Provider
-     * @param bool $withPrettyPrint
-     * @param bool $withUnescapedSlashes
-     * @param string $expected
      * @test
      */
     public function Can_output_JSON(bool $withPrettyPrint, bool $withUnescapedSlashes, string $expected) : void {

@@ -60,21 +60,21 @@ JSON;
             'shown' => [
                 'coffee' => [
                     'once' => false,
-                    'previous' => 1334548570,
+                    'previous' => 1_334_548_570,
                     'lady' => 'stems',
-                    'planned' => 216983651.27143478,
+                    'planned' => 216_983_651.27143478,
                     'alike' => 'verb',
                     'can' => 'creature'
                 ],
                 'dance' => false,
                 'pick' => true,
-                'diagram' => 1635807415.745319,
+                'diagram' => 1_635_807_415.745319,
                 'return' => true,
                 'worry' => false
             ],
             'piece' => false,
             'noise' => 'book',
-            'pipe' => 654136905.9745188,
+            'pipe' => 654_136_905.9745188,
             'unknown' => 'led',
             'moment' => false
         ], $x->toArray());

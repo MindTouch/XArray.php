@@ -30,7 +30,6 @@ abstract class XArrayUnitTestCaseBase extends TestCase  {
     protected static $class;
 
     /**
-     * @param array $array
      * @param SchemaBuilder|null $schemaBuilder - default schema builder will be inferred from source array
      * @return XArray
      */
@@ -42,7 +41,7 @@ abstract class XArrayUnitTestCaseBase extends TestCase  {
 
         // special schema bootstrapping for schema locked arrays
         $source = new XArray($array);
-        $x = new SchemaLockedArray($schemaBuilder !== null ? $schemaBuilder : SchemaBuilder::newFromXArray($source));
+        $x = new SchemaLockedArray($schemaBuilder ?? SchemaBuilder::newFromXArray($source));
         foreach($source->toFlattenedArray() as $key => $value) {
             try {
                 $x->setVal($key, $value);

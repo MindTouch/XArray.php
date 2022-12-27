@@ -26,14 +26,13 @@ use modethirteen\TypeEx\StringEx;
 class XArray {
 
     /**
-     * @param array $array
      * @param string $key - the array path to return, i.e. /pages/content
      * @param bool $isArrayReturnAllowed - can return array or first element of array
      * @param mixed $default - if the key is not found, this value will be returned
      * @return mixed|null
      * @noinspection PhpMissingReturnTypeInspection
      */
-    private static function getValHelper(array $array, string $key, bool $isArrayReturnAllowed, $default) {
+    private static function getValHelper(array $array, string $key, bool $isArrayReturnAllowed, mixed $default) {
         if($key === '') {
             return $default;
         }
@@ -64,12 +63,9 @@ class XArray {
     }
 
     /**
-     * @param array $array
-     * @param string $key
-     * @param mixed $value
      * @return void
      */
-    private static function setValHelper(array &$array, string $key, $value) : void {
+    private static function setValHelper(array &$array, string $key, mixed $value) : void {
         $keys = explode('/', $key);
         $count = count($keys);
         $i = 0;
@@ -103,16 +99,14 @@ class XArray {
 
     /**
      * Lazy initialized list of array keys is reset whenever array is mutated
-     *
-     * @var array|null
      */
-    private $keys = null;
+    private ?array $keys = null;
 
     /**
      * @param array|null $array $array - array values to create XArray from. If not supplied, XArray will start empty
      */
     public function __construct(array $array = null) {
-        $this->array = $array !== null ? $array : [];
+        $this->array = $array ?? [];
     }
 
     /**
@@ -176,7 +170,7 @@ class XArray {
      * @return mixed|null
      * @noinspection PhpMissingReturnTypeInspection
      */
-    public function getVal(string $key, $default = null) {
+    public function getVal(string $key, mixed $default = null) {
         return self::getValHelper($this->array, $key, false, $default);
     }
 
@@ -219,11 +213,11 @@ class XArray {
             $key = StringEx::stringify($key);
 
             /** @noinspection PhpStatementHasEmptyBodyInspection */
-            if(strncmp($key, '@', 1) === 0) {
+            if(str_starts_with($key, '@')) {
 
                 // skip attributes
             } else {
-                $encodedTag = htmlspecialchars($outer ? $outer : $key, ENT_QUOTES);
+                $encodedTag = htmlspecialchars($outer ?: $key, ENT_QUOTES);
                 if(is_array($value) && (count($value) > 0) && isset($value[0])) {
 
                     // numeric array found => child nodes
@@ -237,7 +231,7 @@ class XArray {
                         $attrs = '';
                         foreach($value as $attrKey => $attrValue) {
                             $attrKey = StringEx::stringify($attrKey);
-                            if(strncmp($attrKey, '@', 1) === 0) {
+                            if(str_starts_with($attrKey, '@')) {
                                 $attrValue = StringEx::stringify($attrValue);
                                 $attrs .= ' ' . htmlspecialchars(substr($attrKey, 1), ENT_QUOTES) . '="' . htmlspecialchars($attrValue, ENT_QUOTES) . '"';
                             }
@@ -290,8 +284,6 @@ class XArray {
     /**
      * Internal helper to walk array recursively, building a list of xarray keys
      *
-     * @param string $key
-     * @param array $array
      * @return string[]
      */
     protected function getKeysHelper(string $key, array $array) : array {

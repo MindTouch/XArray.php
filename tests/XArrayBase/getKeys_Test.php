@@ -97,9 +97,6 @@ abstract class getKeys_Test extends XArrayUnitTestCaseBase {
     /**
      * @test
      * @dataProvider source_key_expected_Provider
-     * @param array $source
-     * @param string $key
-     * @param array $expected
      */
     public function Can_get_keys(array $source, string $key, array $expected): void {
 

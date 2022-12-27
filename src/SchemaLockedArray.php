@@ -20,10 +20,7 @@ use modethirteen\XArray\Exception\SchemaLockedArrayUndefinedKeyException;
 
 class SchemaLockedArray extends XArray {
 
-    /**
-     * @var XArray
-     */
-    private $schema;
+    private \modethirteen\XArray\XArray $schema;
 
     /**
      * @param SchemaBuilder $builder
@@ -36,7 +33,6 @@ class SchemaLockedArray extends XArray {
     /**
      * Set or replace a key value
      *
-     * @param string $key
      * @param mixed $value
      * @throws SchemaLockedArrayUndefinedKeyException
      */

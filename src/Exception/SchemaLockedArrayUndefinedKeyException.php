@@ -20,9 +20,6 @@ use Exception;
 
 class SchemaLockedArrayUndefinedKeyException extends Exception {
 
-    /**
-     * @param string $key
-     */
     public function __construct(string $key) {
         parent::__construct('Could not set array key not defined in schema: ' . $key);
     }
