@@ -24,7 +24,7 @@ class JsonArray extends XArray {
 
     public static function newJsonArrayFromJson(string $json) : JsonArray {
         $jsonArray = null;
-        if (!$json) {
+        if ($json) {
             $jsonArray = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
         }
         return new JsonArray($jsonArray);
