@@ -23,7 +23,11 @@ class JsonArray extends XArray {
     private bool $isUnescapedSlashesEnabled = false;
 
     public static function newJsonArrayFromJson(string $json) : JsonArray {
-        return new JsonArray(json_decode($json, true, 512, JSON_THROW_ON_ERROR));
+        $jsonArray = null;
+        if (!$json) {
+            $jsonArray = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        }
+        return new JsonArray($jsonArray);
     }
 
     public function toJson() : string {
