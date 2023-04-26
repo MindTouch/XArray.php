@@ -14,7 +14,7 @@
     "issues": "https://github.com/modethirteen/XArray/issues"
   },
   "require": {
-    "php": "~8.0.0",
+    "php": "~8.2.0",
     "ext-json": "*",
     "modethirteen/type-ex": "dev-main-php8"
   },
