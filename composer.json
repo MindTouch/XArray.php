@@ -16,7 +16,7 @@
   "require": {
     "php": "~8.2.0",
     "ext-json": "*",
-    "modethirteen/type-ex": "dev-main-php8"
+    "modethirteen/type-ex": "dev-main-php82"
   },
   "require-dev": {
     "phpstan/phpstan": "^1.9.3",
